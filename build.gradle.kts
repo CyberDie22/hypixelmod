@@ -14,6 +14,7 @@ repositories {
     // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
     // See https://docs.gradle.org/current/userguide/declaring_repositories.html
     // for more information about repositories.
+    maven(url = "https://repo.essential.gg/repository/maven-public")
 }
 
 dependencies {
@@ -23,6 +24,14 @@ dependencies {
 
     modImplementation("net.fabricmc:fabric-language-kotlin:${property("fabric_kotlin_version")}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_api_version")}")
+
+    modImplementation(include("gg.essential:elementa-1.18.1-fabric:581") {
+        exclude(group = "gg.essential", module = "universalcraft-1.18.1-fabric")
+    })
+    modImplementation(include("gg.essential:universalcraft-1.19.4-fabric:266")!!)
+
+    modImplementation("com.ptsmods:devlogin:3.2.2")
+
 }
 
 tasks {
